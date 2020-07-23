@@ -35,8 +35,8 @@ function Home() {
             <Link to="/products" className="home-nav-items">Products</Link>
             <Link to="/about" className="home-nav-items">About</Link>
             <Link to="/contact" className="home-nav-items">Contact</Link>
-            <div className="home-nav-items"><AccountCircle /></div>
-            <div className="home-nav-items"><ShoppingCart /></div>
+            <div className="home-nav-items"><Link to="/login"><AccountCircle /></Link></div>
+            <div className="home-nav-items"><Link to="/cart"><ShoppingCart /></Link></div>
             </div>
           </div>  
         </div>

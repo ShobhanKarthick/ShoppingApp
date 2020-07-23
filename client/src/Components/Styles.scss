@@ -1,9 +1,15 @@
-html, body {
+html,
+body {
   margin: 0;
   text-align: center;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: Nexa-Bold;
 }
 
@@ -29,7 +35,7 @@ a {
   src: url("./../Fonts/NexaBold.otf");
 }
 
-.bg-overlay{
+.bg-overlay {
   display: none;
   position: absolute;
   top: 0;
@@ -48,23 +54,23 @@ a {
   align-items: center;
 }
 
-.home-nav{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    background-color: #eaedf1;
-    padding: 20px 10px;
-    box-sizing: border-box;
-    box-shadow: 2px 3px 5px #999999;
-    width: 100%;
+.home-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #eaedf1;
+  padding: 20px 10px;
+  box-sizing: border-box;
+  box-shadow: 2px 3px 5px #999999;
+  width: 100%;
 }
 
-.home-nav h1{
-    margin: 0;
+.home-nav h1 {
+  margin: 0;
 }
 
-.home-items-container{
+.home-items-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -75,19 +81,19 @@ a {
   font-size: 30px;
 }
 
-.home-nav-items{
-    font-family: Nexa-Regular;
-    font-size: 20px;
-    padding: 5px 10px;
-    box-sizing: border-box;
+.home-nav-items {
+  font-family: Nexa-Regular;
+  font-size: 20px;
+  padding: 5px 10px;
+  box-sizing: border-box;
 }
 
-#menu-icon{
+#menu-icon {
   display: none;
   font-size: 30px;
 }
 
-.mobile-nav{
+.mobile-nav {
   display: none;
   position: absolute;
   background-color: #fbfcfd;
@@ -99,7 +105,7 @@ a {
   transition: 0.5s;
 }
 
-.mobile-nav h1{
+.mobile-nav h1 {
   margin: 0;
   padding: 15px;
   background-color: #0b6868;
@@ -108,7 +114,7 @@ a {
   color: #fbfcfd;
 }
 
-.mobile-nav-items{
+.mobile-nav-items {
   font-family: Nexa-Regular;
   font-size: 20px;
   padding: 10px;
@@ -123,29 +129,153 @@ a {
 }
 
 @media only screen and (max-width: 600px) {
-
-  .home-nav{
+  .home-nav {
     padding: 10px;
   }
 
-  .home-nav-items:nth-child(1), .home-nav-items:nth-child(2), .home-nav-items:nth-child(3), .home-nav-items:nth-child(4){
+  .home-nav-items:nth-child(1),
+  .home-nav-items:nth-child(2),
+  .home-nav-items:nth-child(3),
+  .home-nav-items:nth-child(4) {
     display: none;
   }
 
-  #menu-icon{
+  #menu-icon {
     display: block;
     margin-right: auto;
   }
 
-  .home-nav h1{
+  .home-nav h1 {
     font-size: 25px;
   }
 
   .home-items-container svg {
     font-size: 25px;
   }
+}
 
+.account-menubar{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #eeeeee;
+}
 
+.account-menubar-items{
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  font-family: Nexa-Regular;
+  font-size: 25px;
+  color: #111111;
+  padding: 10px;
+  border: 0;
+  box-sizing: border-box;
+}
+
+#account-menubar-close{
+  flex: 0.25;
+  flex-direction: column;
+  font-size: 25px;
+  margin: 0;
+}
+
+.register-login-page{
+  background-color: #fbfcfd;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.register-login{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #eeeffe;
+  width: 50vw;
+  box-sizing: border-box;
+  padding-bottom: 40px;
+}
+
+.register-login-head{
+  color: #4ca541;
+  font-size: 22px;
+}
+
+.register-login-form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.register-login-input{
+  background-color: transparent;
+  padding: 10px;
+  padding-left: 15px;
+  font-family: Nexa-Regular;
+  font-size: 22px;
+  color: #000000;
+  margin-top: 15px;
+  border: 0;
+  border-bottom-width: 2px;
+  border-style: solid;
+  border-color: #666666;
+  width: 75%;
+  box-sizing: border-box;
+}
+
+.register-login-input::placeholder{
+  color: #000000;
+}
+
+.register-login-button{
+  border: 0;
+  background-color: #4ca541;
+  width: 80%;
+  padding: 10px;
+  color: #ffffff;
+  font-family: Nexa-Bold;
+  font-size: 20px;
+  margin-top: 40px;
+}
+
+@media only screen and (max-width: 600px) {
+
+  .register-login-page{
+    justify-content: start;
+    background-color: #eeeffe;
   }
+
+  .register-login{
+    width: 100%;
+  }
+
+.account-menubar-items{
+  font-size: 18px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.register-login-input{
+  font-size: 18px;
+  width: 80%;
+}
+
+.register-login-button{
+  font-size: 18px;
+  width: 80%;
+}
+
+
+}
+
 
 
