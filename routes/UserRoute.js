@@ -9,16 +9,16 @@ const saltRounds = 10;
 let User = require("../models/UserData.model");
 
 UserRoutes.route("/checkuser").post((req, res) => {
-	let username = req.body;
-	User.find({ $or:[{email: username}, {phone: username}]}, function (err, user) {
+	let username = req.body.username;
+	User.find({ $or:[{email: username}, {phone: username}]},function (err, user) {
 		if (err) {
-			console.log("Database not found");
+			res.json({error:"database not found"})
 		} else {
 			if (!user){
 				res.json({error:"Not Registered"});
 			}
-			else{
-				res.json({error:"Registered"});
+			else {
+				res.json({success:"User found"})
 			}
 		}
 	});
@@ -26,14 +26,16 @@ UserRoutes.route("/checkuser").post((req, res) => {
 
 UserRoutes.route('/authenticate').post((req, res)=>{
 	let identity = req.body;
-	User.find({$or:[{email: identity.email}, {phone: identity.phone}]},'_id hash',function (err, user) {
+	User.findOne({$or:[{email: identity.username}, {phone: identity.username}]},'_id hash',function (err, user) {
 		if (err) {
 			console.log("Database not found");
 		} else {
 			if (user) {
 				bcrypt.compare(identity.password, user.hash, function(err, result) {
-					if(result) {
+					if (result) {
 						const token = jwt.sign({id: user._id},'secret',(err, token)=>{res.json(token)});
+					} else {
+						res.json({error:"Incorrect Password"})
 					}
 				});
 			} else {
@@ -47,19 +49,12 @@ UserRoutes.route('/register').post((req, res)=>{
 	const data = req.body;
 	const verificationCode = randomstring.generate()
 	bcrypt.hash(data.password, saltRounds, function(err, hash) {
-		if(err){
-			console.log(err)
-		}
-		else{
-			const user = new User({name: data.name, email: data.email, hash: hash, phone: data.phone, verificationCode: verificationCode,});
-			user.save()
-			.then(user => {
-				res.status(200).send("User added successfully")
-			})
-			.catch(error => console.log(error))
+		const user = new User({name: data.name, email: data.email, hash: hash, phone: data.phone, verificationCode: verificationCode,});
+		user.save().then((user) => {
+			res.json({success:"User Added"})
 			console.log("UserID:",user._id,"verificationCode:",verificationCode);
-		}
-	})
+		});
+	});
 });
 
 // UserRoutes.route('/register').post((req, res)=>{
