@@ -1,281 +1,240 @@
 html,
 body {
-  margin: 0;
-  text-align: center;
+	margin: 0;
+	text-align: center;
 }
-
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-family: Nexa-Bold;
+	font-family: Nexa-Bold;
 }
-
 p {
-  font-family: Nexa-Regular;
+	font-family: Nexa-Regular;
 }
-
 a {
-  text-decoration: none;
-  color: #000000;
-}
-
-@font-face {
-  font-family: Nexa-Regular;
-  src: url("./../Fonts/NexaRegular.otf");
+	text-decoration: none;
+	color: #000000;
 }
 @font-face {
-  font-family: Nexa-Light;
-  src: url("./../Fonts/NexaLight.otf");
+	font-family: Nexa-Regular;
+	src: url("./../Fonts/NexaRegular.otf");
 }
 @font-face {
-  font-family: Nexa-Bold;
-  src: url("./../Fonts/NexaBold.otf");
+	font-family: Nexa-Light;
+	src: url("./../Fonts/NexaLight.otf");
 }
-
+@font-face {
+	font-family: Nexa-Bold;
+	src: url("./../Fonts/NexaBold.otf");
+}
 .bg-overlay {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #11111150;
-  z-index: 1;
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: #11111150;
+	z-index: 1;
 }
-
 .home-page {
-  background-color: #fbfcfd;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+	background-color: #fbfcfd;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
-
 .home-nav {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  background-color: #eaedf1;
-  padding: 20px 10px;
-  box-sizing: border-box;
-  box-shadow: 2px 3px 5px #999999;
-  width: 100%;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	background-color: #eaedf1;
+	padding: 20px 10px;
+	box-sizing: border-box;
+	box-shadow: 2px 3px 5px #999999;
+	width: 100%;
 }
-
 .home-nav h1 {
-  margin: 0;
+	margin: 0;
 }
-
 .home-items-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: auto;
 }
-
 .home-items-container svg {
-  font-size: 30px;
+	font-size: 30px;
 }
-
 .home-nav-items {
-  font-family: Nexa-Regular;
-  font-size: 20px;
-  padding: 5px 10px;
-  box-sizing: border-box;
+	font-family: Nexa-Regular;
+	font-size: 20px;
+	padding: 5px 10px;
+	box-sizing: border-box;
 }
-
 #menu-icon {
-  display: none;
-  font-size: 30px;
+	display: none;
+	font-size: 30px;
 }
-
 .mobile-nav {
-  display: none;
-  position: absolute;
-  background-color: #fbfcfd;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 0;
-  z-index: 2;
-  transition: 0.5s;
+	display: none;
+	position: absolute;
+	background-color: #fbfcfd;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 0;
+	z-index: 2;
+	transition: 0.5s;
 }
-
 .mobile-nav h1 {
-  margin: 0;
-  padding: 15px;
-  background-color: #0b6868;
-  font-size: 22px;
-  text-align: left;
-  color: #fbfcfd;
+	margin: 0;
+	padding: 15px;
+	background-color: #0b6868;
+	font-size: 22px;
+	text-align: left;
+	color: #fbfcfd;
 }
-
 .mobile-nav-items {
-  font-family: Nexa-Regular;
-  font-size: 20px;
-  padding: 10px;
-  box-sizing: border-box;
-  text-align: left;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  margin-left: 10px;
-  border-bottom-width: 2px;
-  border-bottom-style: solid;
-  border-bottom-color: #777777;
+	font-family: Nexa-Regular;
+	font-size: 20px;
+	padding: 10px;
+	box-sizing: border-box;
+	text-align: left;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	margin-left: 10px;
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+	border-bottom-color: #777777;
 }
-
 @media only screen and (max-width: 600px) {
-  .home-nav {
-    padding: 10px;
-  }
-
-  .home-nav-items:nth-child(1),
-  .home-nav-items:nth-child(2),
-  .home-nav-items:nth-child(3),
-  .home-nav-items:nth-child(4) {
-    display: none;
-  }
-
-  #menu-icon {
-    display: block;
-    margin-right: auto;
-  }
-
-  .home-nav h1 {
-    font-size: 25px;
-  }
-
-  .home-items-container svg {
-    font-size: 25px;
-  }
+	.home-nav {
+		padding: 10px;
+	}
+		.home-nav-items:nth-child(1),
+	.home-nav-items:nth-child(2),
+	.home-nav-items:nth-child(3),
+	.home-nav-items:nth-child(4) {
+		display: none;
+	}
+		#menu-icon {
+		display: block;
+		margin-right: auto;
+	}
+		.home-nav h1 {
+		font-size: 25px;
+	}
+		.home-items-container svg {
+		font-size: 25px;
+	}
 }
-
 .account-menubar{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  background-color: #eeeeee;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	background-color: #eeeeee;
 }
-
 .account-menubar-items{
-  display: flex;
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-  font-family: Nexa-Regular;
-  font-size: 25px;
-  color: #111111;
-  padding: 10px;
-  border: 0;
-  box-sizing: border-box;
+	display: flex;
+	flex: 1;
+	justify-content: center;
+	align-items: center;
+	font-family: Nexa-Regular;
+	font-size: 25px;
+	color: #111111;
+	padding: 10px;
+	border: 0;
+	box-sizing: border-box;
 }
-
 #account-menubar-close{
-  flex: 0.25;
-  flex-direction: column;
-  font-size: 25px;
-  margin: 0;
+	flex: 0.25;
+	flex-direction: column;
+	font-size: 25px;
+	margin: 0;
 }
-
 .register-login-page{
-  background-color: #fbfcfd;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+	background-color: #fbfcfd;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 }
-
 .register-login{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background-color: #eeeffe;
-  width: 50vw;
-  box-sizing: border-box;
-  padding-bottom: 40px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: #eeeffe;
+	width: 50vw;
+	box-sizing: border-box;
+	padding-bottom: 40px;
 }
-
 .register-login-head{
-  color: #4ca541;
-  font-size: 22px;
+	color: #4ca541;
+	font-size: 22px;
 }
-
 .register-login-form{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
 }
-
 .register-login-input{
-  background-color: transparent;
-  padding: 10px;
-  padding-left: 15px;
-  font-family: Nexa-Regular;
-  font-size: 22px;
-  color: #000000;
-  margin-top: 15px;
-  border: 0;
-  border-bottom-width: 2px;
-  border-style: solid;
-  border-color: #666666;
-  width: 75%;
-  box-sizing: border-box;
+	background-color: transparent;
+	padding: 10px;
+	padding-left: 15px;
+	font-family: Nexa-Regular;
+	font-size: 22px;
+	color: #000000;
+	margin-top: 15px;
+	border: 0;
+	border-bottom-width: 2px;
+	border-style: solid;
+	border-color: #666666;
+	width: 75%;
+	box-sizing: border-box;
 }
-
 .register-login-input::placeholder{
-  color: #000000;
+	color: #000000;
 }
-
 .register-login-button{
-  border: 0;
-  background-color: #4ca541;
-  width: 80%;
-  padding: 10px;
-  color: #ffffff;
-  font-family: Nexa-Bold;
-  font-size: 20px;
-  margin-top: 40px;
+	border: 0;
+	background-color: #4ca541;
+	width: 80%;
+	padding: 10px;
+	color: #ffffff;
+	font-family: Nexa-Bold;
+	font-size: 20px;
+	margin-top: 40px;
 }
-
 @media only screen and (max-width: 600px) {
-
-  .register-login-page{
-    justify-content: start;
-    background-color: #eeeffe;
-  }
-
-  .register-login{
-    width: 100%;
-  }
-
-.account-menubar-items{
-  font-size: 18px;
-  padding-top: 15px;
-  padding-bottom: 15px;
+		.register-login-page{
+		justify-content: start;
+		background-color: #eeeffe;
+	}
+		.register-login{
+		width: 100%;
+	}
+		.account-menubar-items{
+		font-size: 18px;
+		padding-top: 15px;
+		padding-bottom: 15px;
+	}
+		.register-login-input{
+		font-size: 18px;
+		width: 80%;
+	}
+		.register-login-button{
+		font-size: 18px;
+		width: 80%;
+	}
 }
-
-.register-login-input{
-  font-size: 18px;
-  width: 80%;
-}
-
-.register-login-button{
-  font-size: 18px;
-  width: 80%;
-}
-
-
-}
-
-
-
