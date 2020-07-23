@@ -49,7 +49,7 @@ function Register() {
         <input className="register-login-input" type="email" value={email} onChange={emailHandler} placeholder="E-mail" />
         <input className="register-login-input" type="password" value={password} onChange={passwordHandler} pattern=".{8,}" title="Your password must 8 or more characters" placeholder="Password" />
         <input className="register-login-input" type="password" value={confirmPassword} onChange={confirmPasswordHandler} title="Password do not match" placeholder="Confirm Password" />
-        <input className="register-login-input" type="text" value={phone} onChange={phoneHandler} placeholder="Phone" />
+        <input className="register-login-input" type="text" value={phone} onChange={phoneHandler} pattern="[0-9]{3}" maxlength="10" placeholder="Phone" />
         <button className="register-login-button"  form="register-form" type="submit">SIGN UP</button>
         </form>
         </div>
