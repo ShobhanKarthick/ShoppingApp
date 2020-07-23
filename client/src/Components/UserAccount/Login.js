@@ -10,12 +10,20 @@ function Login() {
     useEffect(() => {
         document.getElementById("password").style.display = "none"
         document.getElementById("login-button").style.display = "none"
-    })
+        return
+    }, [])
 
-    const emailVerify = () => {
-        axios.post("/users/checkuser", username)
+    const emailCheck = () => {
+        axios.post("/users/checkuser", {username: username})
         .then(response => {
-            console.log(response.data.error)
+            if(response.data.error === "Not Found"){
+                alert("Please register yourself")
+            }
+            if(response.data.error === "Found"){
+                document.getElementById("password").style.display = "block"
+                document.getElementById("login-button").style.display = "block"
+                document.getElementById("next-button").style.display = "none"
+            }
         })
         .catch(err => {
             console.log(err)
@@ -33,6 +41,19 @@ function Login() {
     const submitHandler = (event) => {
         event.preventDefault()
 
+        let loginDetails = {
+            username: username,
+            password: password
+        }
+
+        axios.post("/users/authenticate", loginDetails)
+        .then(response => {
+            console.log(response.data.token)
+        })
+        .catch(error => {
+            console.log(error)
+        })
+
         setUsername('')
         setPassword('')
     }
@@ -43,9 +64,9 @@ function Login() {
         <Menubar type="login" />
         <p className="register-login-head">Log in to your account</p>
         <form id="login-form" className="register-login-form" onSubmit={submitHandler}>
-        <input id="email" className="register-login-input" type="text" value={username} onChange={usernameHandler} placeholder="E-mail / Phone" />
-        <input id="password" className="register-login-input" type="password" value={password} onChange={passwordHandler} placeholder="Password" />
-        <button id="next-button" className="register-login-button" onClick={emailVerify}>NEXT</button>
+        <input id="email" className="register-login-input" type="text" value={username} onChange={usernameHandler} placeholder="E-mail / Phone" required />
+        <input id="password" className="register-login-input" type="password" value={password} onChange={passwordHandler} placeholder="Password" required />
+        <button id="next-button" className="register-login-button" onClick={emailCheck}>NEXT</button>
         <button id="login-button" className="register-login-button" form="login-form" type="submit">LOGIN</button>
         </form>
 
