@@ -34,13 +34,12 @@ function Register() {
         event.preventDefault()
 
         const newUser  = {
-            name: name,
-            email: email,
-            phone: phone,
-            password: password,
+            name,
+            email,
+            phone,
+            password
         }
-
-        axios.post("http://localhost:4000/users/register", newUser)
+        axios.post("/users/register", newUser)
         .then(
             newUser => {
                 console.log("User added")

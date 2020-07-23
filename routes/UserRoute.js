@@ -57,30 +57,6 @@ UserRoutes.route('/register').post((req, res)=>{
 	});
 });
 
-// UserRoutes.route('/register').post((req, res)=>{
-// 	const verificationCode = randomstring.generate()
-// 	const { name, email, password, phone } = req.body;
-// 	const hash = bcrypt.hashSync(password, saltRounds)
-
-// 	const user = new User({
-// 		name: name,
-// 		email: email,
-// 		hash: hash,
-// 		phone: phone,
-// 		verificationCode: verificationCode
-// 	})
-
-// 	user.save()
-// 	.then(user => {
-// 		res.status(200).send("User added successfully")
-// 	})
-// 	.catch(error => {
-// 		res.status(400).send("user was not added")
-// 		console.log(error)
-// 	})
-// 	}
-// );
-
 UserRoutes.route('/emailverify').post((req, res)=>{
 	let id = req.body.id;
 	let code = req.body.code;
