@@ -45,7 +45,7 @@ UserRoutes.route('/register').post((req, res)=>{
 	const verificationCode = randomstring.generate()
 	bcrypt.hash(data.password, saltRounds, function(err, hash) {
 		const user = new User({name: data.name, email: data.email, hash: hash, phone: data.phone, verificationCode: verificationCode,});
-		console.log("User:",data.phone,"verificationCode:",verificationCode);
+		console.log("UserID:",data.id,"verificationCode:",verificationCode);
 	});
 });
 
@@ -69,7 +69,6 @@ UserRoutes.route('/changepassword').post((req, res)=>{
 	const id = req.body.id;
 	const oldPassword = req.body.oldPassword;
 	const newPassword = req.body.newPassword;
-	const code = req.body.code;
 	User.findById(id,(err, user) => {
 		if (err) {
 			console.log("Database not found");

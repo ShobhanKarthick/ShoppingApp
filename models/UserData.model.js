@@ -6,7 +6,7 @@ let newUser = new schema({
 		type: String,
 		required: true,
 	},
-	email:{
+	email: {
 		type: String,
 		required: true,
 		unique: true,
@@ -15,7 +15,7 @@ let newUser = new schema({
 		type: String,
 		required: true,
 	},
-	password:{
+	hash: {
 		type:String,
 		required: true,
 	},
