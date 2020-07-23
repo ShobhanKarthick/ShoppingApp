@@ -19,7 +19,7 @@ function Home() {
         <div className="home-page">
         <div onClick={closeMenu} id="bg-overlay" className="bg-overlay"/>
         <div id="mobile-nav" className="mobile-nav">
-        <h1><Link to="/">Quickmart</Link></h1>
+        <h1><Link to="/">Easy Shoppie</Link></h1>
         <Link to="/"><div className="mobile-nav-items">Home</div></Link>
         <Link to="/products"><div className="mobile-nav-items">Products</div></Link>
         <Link to="/about"><div className="mobile-nav-items">About</div></Link>
@@ -29,7 +29,7 @@ function Home() {
 
           <div className="home-nav">
           <Menu onClick={openMenu} id="menu-icon"/>
-            <h1>Quickmart</h1>
+            <h1><Link to="/">Easy Shoppie</Link></h1>
             <div className="home-items-container">
             <Link to="/" className="home-nav-items">Home</Link>
             <Link to="/products" className="home-nav-items">Products</Link>
