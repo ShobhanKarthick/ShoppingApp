@@ -10,18 +10,18 @@ let User = require("../models/UserData.model");
 
 UserRoutes.route("/checkuser").post((req, res) => {
 	let username = req.body.username;
-	User.find({ $or:[{email: username}, {phone: username}]},function (err, user) {
-		if (err) {
-			res.json({error:"database not found"})
-		} else {
-			if (!user){
-				res.json({error:"Not Registered"});
-			}
-			else {
-				res.json({success:"User found"})
-			}
+	User.findOne({ $or:[{email: username}, {phone: username}]})
+	.then(user => {
+		if(!user){
+			res.json({error: "Not Found"})
+		}else{
+
+			res.json({error: "Found"})
 		}
-	});
+	})
+	.catch(error => {
+		console.log(error)
+	})
 });
 
 UserRoutes.route('/authenticate').post((req, res)=>{
@@ -33,7 +33,7 @@ UserRoutes.route('/authenticate').post((req, res)=>{
 			if (user) {
 				bcrypt.compare(identity.password, user.hash, function(err, result) {
 					if (result) {
-						const token = jwt.sign({id: user._id},'secret',(err, token)=>{res.json(token)});
+						const token = jwt.sign({id: user._id},'secret',(err, token)=>{res.json({token})});
 					} else {
 						res.json({error:"Incorrect Password"})
 					}
