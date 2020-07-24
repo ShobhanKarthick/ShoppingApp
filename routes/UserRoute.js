@@ -59,10 +59,9 @@ UserRoutes.route('/register').post((req, res)=>{
 	const verificationCode = randomstring.generate()
 	bcrypt.hash(data.password, saltRounds, function(err, hash) {
 		const user = new User({name: data.name, email: data.email, hash: hash, phone: data.phone, verificationCode: verificationCode,});
-		user.save().then((user) => {
+		user.save()
+		.then((user) => {
 			res.json({success:"User Added"})
-			console.log("UserID:",user._id,"verificationCode:",verificationCode);
-
 			const mailOptions = {
 				from: "shoppieeasy@gmail.com",
 				to: user.email,
@@ -82,7 +81,10 @@ UserRoutes.route('/register').post((req, res)=>{
 				  console.log("Email sent");
 				}
 			  });
-		});
+		})
+		.catch(error => {
+			res.status(400).send("User was not added")
+		})
 	});
 });
 
@@ -105,7 +107,7 @@ UserRoutes.route('/emailverify').post((req, res)=>{
 		}
 		else{
 			res.status(400).send("User not found")
-			console.log("User not found")
+			res.json({error:"User not found"})
 		}
 	})
 })
