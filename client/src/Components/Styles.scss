@@ -116,7 +116,7 @@ a {
 	.home-nav {
 		padding: 10px;
 	}
-		.home-nav-items:nth-child(1),
+	.home-nav-items:nth-child(1),
 	.home-nav-items:nth-child(2),
 	.home-nav-items:nth-child(3),
 	.home-nav-items:nth-child(4) {
@@ -139,7 +139,7 @@ a {
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	background-color: #eeeeee;
+	background-color: #eeeffe;
 }
 .account-menubar-items{
 	display: flex;
@@ -172,7 +172,7 @@ a {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background-color: #eeeffe;
+	background-color: #eeeeee;
 	width: 50vw;
 	box-sizing: border-box;
 	padding-bottom: 40px;
@@ -209,7 +209,7 @@ a {
 .register-login-button{
 	border: 0;
 	background-color: #4ca541;
-	width: 80%;
+	width: 75%;
 	padding: 10px;
 	color: #ffffff;
 	font-family: Nexa-Bold;
@@ -219,7 +219,7 @@ a {
 @media only screen and (max-width: 600px) {
 		.register-login-page{
 		justify-content: start;
-		background-color: #eeeffe;
+		background-color: #eeeeee;
 	}
 		.register-login{
 		width: 100%;
@@ -231,10 +231,50 @@ a {
 	}
 		.register-login-input{
 		font-size: 18px;
-		width: 80%;
+		width: 90%;
 	}
 		.register-login-button{
 		font-size: 18px;
-		width: 80%;
+		width: 90%;
+	}
+}
+
+.verification-page{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+}
+
+.verification-message-container{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 50vw;
+	border-radius: 8px;
+	border-width: 2px;
+	border-style: solid;
+	border-color: #888888;
+	padding: 30px;
+	box-sizing: border-box;
+}
+
+.verification-login-button{
+	border: 0;
+	background-color: #4ca541;
+	width: 150px;
+	padding: 10px;
+	color: #ffffff;
+	font-family: Nexa-Bold;
+	font-size: 20px;
+	margin-top: 20px;
+	border-radius: 25px;
+}
+
+@media only screen and (max-width: 600px) {
+	.verification-message-container{
+		width: 80vw;
 	}
 }

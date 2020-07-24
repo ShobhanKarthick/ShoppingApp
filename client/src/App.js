@@ -8,6 +8,7 @@ import Contact from './Components/Contact'
 import Register from './Components/UserAccount/Register';
 import Login from './Components/UserAccount/Login';
 import Cart from './Components/Cart/Cart';
+import Verification from './Components/UserAccount/Verification';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route exact path="/register" component={Register} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/cart" component={Cart} />
+      <Route exact path="/verification/:id/:code" component={Verification} />
     </Router>
   );
 }

@@ -3,10 +3,19 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const randomstring = require('randomstring');
 
+const nodemailer = require('nodemailer')
 const UserRoutes = express.Router();
 const saltRounds = 10;
 
 let User = require("../models/UserData.model");
+
+const transporter = nodemailer.createTransport({
+	service: "gmail",
+	auth: {
+	  user: "shoppieeasy@gmail.com",
+	  pass: "easyshoppie@123",
+	},
+  });
 
 UserRoutes.route("/checkuser").post((req, res) => {
 	let username = req.body.username;
@@ -50,10 +59,32 @@ UserRoutes.route('/register').post((req, res)=>{
 	const verificationCode = randomstring.generate()
 	bcrypt.hash(data.password, saltRounds, function(err, hash) {
 		const user = new User({name: data.name, email: data.email, hash: hash, phone: data.phone, verificationCode: verificationCode,});
-		user.save().then((user) => {
+		user.save()
+		.then((user) => {
 			res.json({success:"User Added"})
-			console.log("UserID:",user._id,"verificationCode:",verificationCode);
-		});
+			const mailOptions = {
+				from: "shoppieeasy@gmail.com",
+				to: user.email,
+				subject: "Verification Code",
+				html: `<h2>Hello ${user.name},<br> Thanks for registering with Easy Shoppie</h2>
+				  <br>
+				  <h3>Please click the below link to verify your account</h3>
+				  <a href="http://localhost:3000/verification/${user._id}/${user.verificationCode}" target="_blank"> http://localhost:3000/verification/${user._id}/${user.verificationCode} </a>
+				  `,
+			  };
+		
+			  transporter.sendMail(mailOptions, (err, data) => {
+				if (err) {
+				  console.log(err);
+				  console.log("Mail not sent!");
+				} else {
+				  console.log("Email sent");
+				}
+			  });
+		})
+		.catch(error => {
+			res.status(400).send("User was not added")
+		})
 	});
 });
 
@@ -61,14 +92,22 @@ UserRoutes.route('/emailverify').post((req, res)=>{
 	let id = req.body.id;
 	let code = req.body.code;
 	User.findById(id,(err, user) => {
-		if (!user.verificationCode) {
-			res.json({error:"Already Verified"});
-		} else if (user.verificationCode === code) {
-			User.findByIdAndUpdate(id, { verificationCode: undefined }, (err, user) => {
-				res.json({success:"Verified"});
-			})
-		} else {
-			res.json({error:"Incorrect verification code"})
+		if(user){
+			if (!user.verificationCode) {
+				res.status(200)
+				res.json({error:"Already Verified"});
+			} else if (user.verificationCode === code) {
+				User.findByIdAndUpdate(id, { verificationCode: undefined }, (err, user) => {
+					res.status(200)
+					res.json({error:"Verified"});
+				})
+			} else {
+				res.json({error:"Incorrect verification code"})
+			}
+		}
+		else{
+			res.status(400).send("User not found")
+			res.json({error:"User not found"})
 		}
 	})
 })
