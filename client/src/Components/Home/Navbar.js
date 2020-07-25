@@ -2,21 +2,21 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Menu, AccountCircle, ShoppingCart } from '@material-ui/icons'
 
-function Home() {
+function Navbar() {
 
-  const openMenu = () => {
-    document.getElementById("bg-overlay").style.display = "block"
-    document.getElementById("mobile-nav").style.display = "block"
-    document.getElementById("mobile-nav").style.width = "75vw"
-
-  }
-  const closeMenu = () => {
-    document.getElementById("bg-overlay").style.display = "none"
-    document.getElementById("mobile-nav").style.display = "none"
-  }
+    const openMenu = () => {
+        document.getElementById("bg-overlay").style.display = "block"
+        document.getElementById("mobile-nav").style.display = "block"
+        document.getElementById("mobile-nav").style.width = "75vw"
+    
+      }
+      const closeMenu = () => {
+        document.getElementById("bg-overlay").style.display = "none"
+        document.getElementById("mobile-nav").style.display = "none"
+      }
 
     return (
-        <div className="home-page">
+        <React.Fragment>
         <div onClick={closeMenu} id="bg-overlay" className="bg-overlay"/>
         <div id="mobile-nav" className="mobile-nav">
         <h1><Link to="/">Easy Shoppie</Link></h1>
@@ -38,9 +38,9 @@ function Home() {
             <div className="home-nav-items"><Link to="/login"><AccountCircle /></Link></div>
             <div className="home-nav-items"><Link to="/cart"><ShoppingCart /></Link></div>
             </div>
-          </div>  
-        </div>
+          </div> 
+        </React.Fragment>
     )
 }
 
-export default Home
+export default Navbar
