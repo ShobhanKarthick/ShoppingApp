@@ -6,6 +6,7 @@ const PORT = process.env.PORT || 4000;
 
 const app = express();
 const UserRoutes = require("./routes/UserRoute");
+const ProductRoutes = require("./routes/ProductRoute");
 
 app.use(bodyParser.json());
 
@@ -20,6 +21,7 @@ db.once("open", () => {
 });
 
 app.use("/users", UserRoutes);
+app.use("/products", ProductRoutes);
 
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
