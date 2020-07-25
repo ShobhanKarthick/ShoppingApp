@@ -2,31 +2,32 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const { ObjectID } = mongoose.Schema.Types
 
-let newTask = new Schema({
+let newProduct = new Schema({
     title: {
         type: String,
         required: true,
     },
-    idea:{
+    description:{
         type: String,
         required: true,
     },
-    body: {
-        type: String,
+    images: {
+        type: [String],
         required: true,
     },
-    deadline: {
-        type: Date,
+    category: {
+        type: [String],
+        required: true,
+    }
+    MRP: {
+        type: Number,
+        set: num => Math.round((num + Number.EPSILON) * 100) / 100,
         required: true,
     },
-    done: {
-        type: Boolean,
+    Discount: {
+        type: Number,
         required: true,
-    },
-    createdBy: {
-        type: ObjectID,
-        ref: 'Users',
     }
 })
 
-module.exports = mongoose.model('Products', newTask)
+module.exports = mongoose.model('Products', newProduct)
