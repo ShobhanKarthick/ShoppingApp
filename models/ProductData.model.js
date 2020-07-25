@@ -24,7 +24,7 @@ let newProduct = new Schema({
         set: num => Math.round((num + Number.EPSILON) * 100) / 100,
         required: true,
     },
-    Discount: {
+    discount: {
         type: Number,
         required: true,
     }
