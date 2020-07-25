@@ -18,7 +18,7 @@ let newProduct = new Schema({
     category: {
         type: [String],
         required: true,
-    }
+    },
     MRP: {
         type: Number,
         set: num => Math.round((num + Number.EPSILON) * 100) / 100,
