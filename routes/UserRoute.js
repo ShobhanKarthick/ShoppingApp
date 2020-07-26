@@ -147,5 +147,21 @@ UserRoutes.route('/changepassword').post((req, res)=>{
 		}
 	})
 })
+UserRoutes.route('/cart').post((req, res)=>{
+	const body = req.body;
+	User.findById(body.id, (err, user) => {
+		const index = user.cart.map(a=>a.item).indexOf(body.item);
+		if (body.quantity == 0) {
+			user.cart = user.cart.filter((a) => a.id == body.item)
+		} else if (index != -1) {
+			user.cart[index].quantity = body.quantity
+		} else {
+			user.cart.push({item:body.item, quantity:body.quantity})
+		}
+		user.save().then(user => {
+			res.status(200).json({success:'success'})
+		});
+	})
+})
 
 module.exports = UserRoutes
