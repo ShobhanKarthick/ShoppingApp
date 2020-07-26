@@ -48,7 +48,7 @@ function Login() {
 
         axios.post("/users/authenticate", loginDetails)
         .then(response => {
-            console.log(response.data.token)
+            localStorage.setItem(response.data.token, "TOKEN")
         })
         .catch(error => {
             console.log(error)

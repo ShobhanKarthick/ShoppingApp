@@ -17,6 +17,17 @@ const transporter = nodemailer.createTransport({
 	},
   });
 
+UserRoutes.route("/single/:id").get((req, res) => {
+	let id = req.params.id
+	User.findById(id)
+	.then(user => {
+		res.status(200).json(user)
+	})
+	.catch(error => {
+		res.status(400).send("User not found")
+	})
+})  
+
 UserRoutes.route("/checkuser").post((req, res) => {
 	let username = req.body.username;
 	User.findOne({ $or:[{email: username}, {phone: username}]})
@@ -42,7 +53,7 @@ UserRoutes.route('/authenticate').post((req, res)=>{
 			if (user) {
 				bcrypt.compare(identity.password, user.hash, function(err, result) {
 					if (result) {
-						const token = jwt.sign({id: user._id},'secret',(err, token)=>{res.json({token})});
+						const token = jwt.sign({id: user._id},'' + process.env.SECRET,(err, token)=>{res.json({token})});
 					} else {
 						res.json({error:"Incorrect Password"})
 					}
