@@ -143,7 +143,6 @@ UserRoutes.route('/cart').post((req, res)=>{
 		if (body.quantity == 0) {
 			user.cart = user.cart.filter((a) => a.id == body.item)
 		} else if (index != -1) {
-			console.log(user.cart,index)
 			user.cart[index].quantity = body.quantity
 		} else {
 			user.cart.push({item:body.item, quantity:body.quantity})
