@@ -27,7 +27,7 @@ let newUser = new schema({
 		type: [{
 			item: {
 				type:schema.Types.ObjectId,
-				ref: 'Ingredient',
+				ref: 'Products',
 				required:true,
 			},
 			quantity: {

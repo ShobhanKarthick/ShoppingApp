@@ -29,9 +29,9 @@ ProductRoutes.route("/search").post((req, res)=>{
 	console.log({ title: query });
 	Product.find({$or:[{title: query},{description: query}] },(err, product)=> {
 		if (err) {
-			res.json({error:"Database not found"})
+			res.status(400).json({error:"Database not found"})
 		} else {
-			res.json(product)
+			res.status(200).json(product)
 		}
 	})
 })
@@ -41,9 +41,9 @@ ProductRoutes.route("/add").post((req, res)=>{
 	const product = new Product(query);
 	product.save((err,user)=>{
 		if (err) {
-			res.json({error:err})
+			res.status(400).json({error:err})
 		} else {
-			res.json({success:"Product Added"})
+			res.status(200).json({success:"Product Added"})
 		}
 		
 	})
