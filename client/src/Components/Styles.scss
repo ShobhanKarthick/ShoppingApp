@@ -330,7 +330,7 @@ a {
 .home-products-items-container{
 	display: flex;
 	flex-direction: row;
-	justify-content: start;
+	justify-content: flex-start;
 	align-items: center;
 	flex: 1;
 	width: 100%;
@@ -391,4 +391,34 @@ a {
 	margin-left: 3px;
 	margin-right: 3px;
 	text-align: center;
+}
+
+
+.logout-dialog{
+	position: absolute;
+	top: 60px;
+	right: 77.5px;
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: #ffffff;
+	border-width: 2px;
+	border-style: solid;
+	border-color: #888888;
+	border-radius: 10px;
+	padding: 40px;
+	max-width: 180px;
+	z-index: 2;
+}
+
+.logout-button{
+	border: 0;
+	width: 150px;
+	background-color: #4ca541;
+	font-family: Nexa-Regular;
+	font-size: 22px;
+	color: #ffffff;
+	padding: 5px;
+	border-radius: 20px;
 }

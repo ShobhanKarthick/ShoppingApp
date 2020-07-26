@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 import Menubar from './Menubar'
 
@@ -6,6 +7,7 @@ function Login() {
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const history = useHistory()
 
     useEffect(() => {
         document.getElementById("password").style.display = "none"
@@ -49,6 +51,7 @@ function Login() {
         axios.post("/users/authenticate", loginDetails)
         .then(response => {
             localStorage.setItem(response.data.token, "TOKEN")
+            history.push("/")
         })
         .catch(error => {
             console.log(error)

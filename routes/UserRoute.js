@@ -2,12 +2,14 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const randomstring = require('randomstring');
+const localStorage = require('localStorage')
 
 const nodemailer = require('nodemailer')
 const UserRoutes = express.Router();
 const saltRounds = 10;
 
 let User = require("../models/UserData.model");
+const authUser = require('../Middlewares/authUser');
 
 const transporter = nodemailer.createTransport({
 	service: "gmail",
@@ -17,8 +19,9 @@ const transporter = nodemailer.createTransport({
 	},
   });
 
-UserRoutes.route("/single/:id").get((req, res) => {
-	let id = req.params.id
+UserRoutes.route("/authuser").get(authUser, (req, res) => {
+	let id = req.userdata.id
+	let token = req.token
 	User.findById(id)
 	.then(user => {
 		res.status(200).json(user)
@@ -53,7 +56,9 @@ UserRoutes.route('/authenticate').post((req, res)=>{
 			if (user) {
 				bcrypt.compare(identity.password, user.hash, function(err, result) {
 					if (result) {
-						const token = jwt.sign({id: user._id},'' + process.env.SECRET,(err, token)=>{res.json({token})});
+						let token = jwt.sign({id: user._id},'' + process.env.SECRET)
+							res.json({token})
+							localStorage.setItem("TOKEN", token)
 					} else {
 						res.json({error:"Incorrect Password"})
 					}
@@ -64,6 +69,10 @@ UserRoutes.route('/authenticate').post((req, res)=>{
 		}
 	})
 });
+
+UserRoutes.route("/logout").get((req, res) => {
+	localStorage.removeItem("TOKEN")
+})
 
 UserRoutes.route('/register').post((req, res)=>{
 	const data = req.body;
