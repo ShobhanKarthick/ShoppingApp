@@ -422,3 +422,49 @@ a {
 	padding: 5px;
 	border-radius: 20px;
 }
+
+.cart-page{
+	background-color: #fbfcfd;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-bottom: 40px;
+}
+
+.cart{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 80%;
+	padding: 20px;
+}
+
+.cart h1{
+	width: 100%;
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+	border-bottom-color: #888888;
+	box-sizing: border-box;
+	padding-bottom: 20px;
+}
+
+.cart-table{
+	width: 100%;
+	border: 0;
+	border-collapse: collapse;
+}
+
+.cart-table th{
+	border: none;
+	font-family: Nexa-Bold;
+	font-size: 25px;
+	padding: 8px;
+}
+
+.cart-table tr:nth-child(1){
+	background-color: #555555;
+	color: #eeeeee;
+}
+

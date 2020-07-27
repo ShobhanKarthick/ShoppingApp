@@ -23,6 +23,7 @@ UserRoutes.route("/authuser").get(authUser, (req, res) => {
 	let id = req.userdata.id
 	let token = req.token
 	User.findById(id)
+	.populate("cart.item")
 	.then(user => {
 		res.status(200).json(user)
 	})
@@ -57,7 +58,7 @@ UserRoutes.route('/authenticate').post((req, res)=>{
 				bcrypt.compare(identity.password, user.hash, function(err, result) {
 					if (result) {
 						let token = jwt.sign({id: user._id},'' + process.env.SECRET)
-							res.json({token})
+							res.json({token, error:"Success"})
 							localStorage.setItem("TOKEN", token)
 					} else {
 						res.json({error:"Incorrect Password"})
@@ -156,7 +157,7 @@ UserRoutes.route('/changepassword').post((req, res)=>{
 		}
 	})
 })
-UserRoutes.route('/cart').post((req, res)=>{
+UserRoutes.route('/addtocart').post((req, res)=>{
 	const body = req.body;
 	User.findById(body.id, (err, user) => {
 		const index = user.cart.map(a=>a.item).indexOf(body.item);

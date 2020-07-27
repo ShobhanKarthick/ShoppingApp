@@ -1,7 +1,8 @@
-const mongoose = require('mongoose');
-const schema = mongoose.Schema;
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
+// const { ObjectID } = mongoose.Schema.Types
 
-let newUser = new schema({
+let newUser = new Schema({
 	name: {
 		type: String,
 		required: true,
@@ -23,10 +24,10 @@ let newUser = new schema({
 		type:String,
 		required: false,
 	},
-	cart: {
-		type: [{
+	cart: [
+		{
 			item: {
-				type:schema.Types.ObjectId,
+				type: Schema.Types.ObjectId,
 				ref: 'Products',
 				required:true,
 			},
@@ -34,9 +35,8 @@ let newUser = new schema({
 				type:Number,
 				required:true,
 			}
-		}],
-		required:false
-	},
+		},
+	],
 	orders: {
 		type: [{
 			id: {

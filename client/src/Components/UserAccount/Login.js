@@ -50,15 +50,23 @@ function Login() {
 
         axios.post("/users/authenticate", loginDetails)
         .then(response => {
-            localStorage.setItem(response.data.token, "TOKEN")
-            history.push("/")
+            if(response.data.error === "Incorrect Password"){
+              alert("Password and Username do not match")
+            }  
+            if(response.data.error === "Not Registered"){
+              alert("Please register. Email ID / Phone unavailable")
+            }  
+            if(response.data.error === "Success"){
+                setUsername('')
+                setPassword('')
+                localStorage.setItem(response.data.token, "TOKEN")
+                history.push("/")
+            }  
         })
         .catch(error => {
             console.log(error)
         })
 
-        setUsername('')
-        setPassword('')
     }
 
     return (
