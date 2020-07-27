@@ -3,7 +3,8 @@ import axios from 'axios';
 
 function QuantityInput(props) {
 
-    const [quantity, setQuantity] = useState(1)
+    const [quantity, setQuantity] = useState(props.quantity)
+
     
     const quantityHandler = (event) => {
         setQuantity(event.target.value);

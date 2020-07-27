@@ -42,6 +42,15 @@ function HomeProducts(props) {
     const searchHandler = (event) => {
         setSearch(event.target.value);
     }
+    const quantityGetter = (product) => {
+        if (user) {
+            const index = user.cart.map(cart => cart.item._id).indexOf(product._id)
+            if (index !== -1) {
+                return user.cart[index].quantity
+            }
+        }
+    }
+
 
     return (
         <div className="home-products">
@@ -65,7 +74,7 @@ function HomeProducts(props) {
                                     <p>{product.title}</p>
                                     <div className="product-bottom">
                                         <p>MRP Rs. {product.MRP}</p>
-                                        <QuantityInput user={user} product={product}/>
+                                        <QuantityInput user={user} product={product} quantity={quantityGetter(product)}/>
                                     </div>
                                     </div>
                             </React.Fragment>
